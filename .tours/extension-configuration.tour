@@ -1,0 +1,140 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Extension Configuration",
+  "steps": [
+    {
+      "directory": "",
+      "description": "This repository uses sveltejs to create a custom webview for a vscode extension. The base repository was created using the `yo code` generator for a typescript vscode generator. Afterwards, a svelte project was added as a subfolder. Some configurations were modified so that the extension will first build the sveltejs bundle.js and bundle.css files. It then uses these in a custom webview that is linked to an activation command.",
+      "title": "Introduction"
+    },
+    {
+      "directory": "webview",
+      "description": "To get started, we need to use the following commands to create an initialize a sveltejs project as a subfolder for the extension.\n\n```shell\nnpx degit sveltejs/template webview\ncd webview\nnode scripts/setupTypeScript.js\nnpm i\n```"
+    },
+    {
+      "file": "webview/rollup.config.js",
+      "description": "We need to change the output path for the compiled bundle.js file. This uses the out folder which the vscode extension uses during launch. By setting this path here, svelte will also generate the bundle.css file at the same location.",
+      "line": 39,
+      "selection": {
+        "start": {
+          "line": 21,
+          "character": 16
+        },
+        "end": {
+          "line": 21,
+          "character": 23
+        }
+      }
+    },
+    {
+      "file": "tsconfig.json",
+      "description": "We need to exclude the svelte webview folder from the extension's tsconfig. The extension will maintain it's own config and build system.",
+      "line": 20
+    },
+    {
+      "file": "package.json",
+      "description": "From the extension's package.json file, we need to add a build script that will use the package.json scripts from the svelte webview folder to build the project. We can do this from the parent script if we add the prefix flag that points to the folder location of the svelte package.json file.",
+      "line": 26,
+      "selection": {
+        "start": {
+          "line": 26,
+          "character": 1
+        },
+        "end": {
+          "line": 27,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": ".vscode/tasks.json",
+      "description": "We can now add the build-webview script to the tasks list.",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 1
+        },
+        "end": {
+          "line": 11,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": ".vscode/tasks.json",
+      "description": "and make it a dependsOn configuration for the default task. Tasks are run by the launcher when you start the extension, so this will first run the build-webview script and then run the npm watch script.",
+      "line": 25,
+      "selection": {
+        "start": {
+          "line": 23,
+          "character": 1
+        },
+        "end": {
+          "line": 26,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "webview/src/App.svelte",
+      "description": "The svelte code for the webview is located in App.svelte. We can customize this to any webview application that we need.",
+      "line": 30,
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 30,
+          "character": 9
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "To use our svelte webview, we will create a new webview panel class (or webview provider). This code will define the webview and import the bundle.js and bundle.css from svelte into the html for the webview.",
+      "line": 4,
+      "selection": {
+        "start": {
+          "line": 4,
+          "character": 1
+        },
+        "end": {
+          "line": 5,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "This line allows the webview to load local resources from the out/compiled directory which is where svelte builds the bundle.js and bundle.css files.",
+      "line": 40
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "We can then get Uris to each of the svelte resources. These will be used below in the html.",
+      "line": 107,
+      "selection": {
+        "start": {
+          "line": 100,
+          "character": 1
+        },
+        "end": {
+          "line": 108,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "The svelte bundle.css file is linked to the webview here.",
+      "line": 125
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "The svelte bundle.js file is linked to the webview here.\n",
+      "line": 134
+    }
+  ]
+}
