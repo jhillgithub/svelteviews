@@ -55,6 +55,7 @@
     ]
   },
   "scripts": {
+		"preinstall": "cd webviews && npm install",
     "vscode:prepublish": "npm run compile",
     "build-webviews": "npm run build --prefix ./webviews/",
     "compile": "tsc -p ./",
