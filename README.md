@@ -10,12 +10,10 @@ Create a new project from this template using degit.
 npx degit jhillgithub/svelteviews my-extension
 ```
 
-You can then cd into the project to install the dependencies. Note, in the current iteration, you have to npm install the sveltejs subfolder and then the extension dependencies.
+You can then cd into the project to install the dependencies.
 
 ```shell
-cd my-extension/webviews
-npm i
-cd ..
+cd my-extension
 npm i
 ```
 
