@@ -2,7 +2,7 @@
 import * as _vscode from "vscode";
 
 declare global {
-  const tsvscode: {
+  const vscode: {
     postMessage: ({
       type: string,
       value: any,
