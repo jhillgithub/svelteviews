@@ -27,7 +27,7 @@ code .
 
 ## Code Walkthrough
 
-This repos includes guide code tours that can be viewed with the [CodeTours Extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
+This repo includes guide code tours that can be viewed with the [CodeTours Extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
 
 ## Credits
 
