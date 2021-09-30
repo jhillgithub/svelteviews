@@ -2,7 +2,7 @@
 
 This repository scaffolds out a basic vscode extension that uses sveltejs webviews.
 
-## Usage
+## Installation
 
 Create a new project from this template using degit.
 
@@ -15,8 +15,16 @@ You can then cd into the project to install the dependencies. Note, in the curre
 ```shell
 cd my-extension/webviews
 npm i
-cd ../
+cd ..
 npm i
+```
+
+## Running the extension
+
+After installing the node dependencies, you can open vscode in the folder and then run the extension from the debug menu or using f5 on the keyboard.
+
+```shell
+code .
 ```
 
 ## Credits
