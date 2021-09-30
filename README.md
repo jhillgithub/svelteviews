@@ -25,6 +25,10 @@ After installing the node dependencies, you can open vscode in the folder and th
 code .
 ```
 
+## Code Walkthrough
+
+This repos includes guide code tours that can be viewed with the [CodeTours Extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
+
 ## Credits
 
 Most of this code was cobbled together from multiple online resources including:
