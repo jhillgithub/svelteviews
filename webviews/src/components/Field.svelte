@@ -10,5 +10,5 @@
   }
 </script>
 
-<td contenteditable="true" bind:innerHTML={key} on:input={dataUpdated} />
+<td>{key}</td>
 <td contenteditable="true" bind:innerHTML={value} on:input={dataUpdated} />

@@ -64,12 +64,37 @@
 {#if dataType == ""}
   <p>Loading</p>
 {:else if dataType === "customData"}
-  <table>
-    {#each Object.keys(jsonData) as key}
-      <tr>
-        <Field bind:value={jsonData[key]} {key} on:message={handleMessage} />
-      </tr>
-    {/each}
-  </table>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">JSON Custom Editor</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each Object.keys(jsonData) as key (key)}
+            <tr>
+              <Field
+                bind:value={jsonData[key]}
+                {key}
+                on:message={handleMessage}
+              />
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  </section>
 {/if}
-<pre>{JSON.stringify({jsonData},null,2)}</pre>
+<section class="section">
+  <div class="container">
+    <pre>{JSON.stringify({jsonData},null,2)}</pre>
+  </div>
+</section>
+
+<style>
+  @import "../../node_modules/bulma/css/bulma.css";
+</style>
