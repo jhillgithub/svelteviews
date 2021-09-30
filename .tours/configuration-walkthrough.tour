@@ -1,0 +1,259 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Configuration Walkthrough",
+  "steps": [
+    {
+      "directory": "",
+      "description": "The project uses sveltejs to create custom webviews for vscode.\r\n"
+    },
+    {
+      "directory": "webviews",
+      "description": "The sveltejs code is contained inside of the webviews folder. This folder contains all of the sveltjs components and configuration used by the extension."
+    },
+    {
+      "file": "webviews/rollup.config.js",
+      "description": "The rollup.config.js file is a custom modification to the official sveltejs template. This rollup config allows us to compile and build each file to the output directory that vscode uses for the extension. This is required so we can securely attach these scripts to vscode.",
+      "line": 45,
+      "selection": {
+        "start": {
+          "line": 45,
+          "character": 1
+        },
+        "end": {
+          "line": 46,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "package.json",
+      "description": "A preinstall script was added to the extension to install all of the npm dependencies for the sveltjs project before installing the dependencies for the extension.",
+      "line": 58,
+      "selection": {
+        "start": {
+          "line": 58,
+          "character": 1
+        },
+        "end": {
+          "line": 59,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "package.json",
+      "description": "A custom build script was also added that builds each svelte webview component.",
+      "line": 60,
+      "selection": {
+        "start": {
+          "line": 60,
+          "character": 1
+        },
+        "end": {
+          "line": 61,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": ".vscode/tasks.json",
+      "description": "The build script for the webviews is added as a task for the extension launcher.\r\n",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 1
+        },
+        "end": {
+          "line": 11,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": ".vscode/tasks.json",
+      "description": "The extension launcher tasks depends on the sveltejs build step. This ensures that the extension manually builds the sveltejs webviews before launching the extension.",
+      "line": 25,
+      "selection": {
+        "start": {
+          "line": 23,
+          "character": 1
+        },
+        "end": {
+          "line": 26,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/extension.ts",
+      "description": "The vscode extension registers the commands and webviews required. ",
+      "line": 19,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 1
+        },
+        "end": {
+          "line": 20,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/extension.ts",
+      "description": "In this example, there is a custom sidebar panel that is triggered when selecting the custom svg icon located on vscode's left menu.\r\n\r\n",
+      "line": 6,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 1
+        },
+        "end": {
+          "line": 7,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/extension.ts",
+      "description": "The extension also provides a custom data editor panel that is triggered for certain file types. In this example, a json file with the extension \".customData\" will trigger the webview.\r\n\r\n",
+      "line": 9,
+      "selection": {
+        "start": {
+          "line": 9,
+          "character": 1
+        },
+        "end": {
+          "line": 10,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/extension.ts",
+      "description": "This extension also registers a custom vscode command that will create a new webview or show an existing webview panel.",
+      "line": 19,
+      "selection": {
+        "start": {
+          "line": 15,
+          "character": 1
+        },
+        "end": {
+          "line": 20,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "For each webview, we have to setup the webview to use the compiled scripts from sveltejs. This code ensures that we can use local resources from the \"out/compiled\" folder that sveltejs builds to (this is set in svelte's rollup config).",
+      "line": 40,
+      "selection": {
+        "start": {
+          "line": 40,
+          "character": 1
+        },
+        "end": {
+          "line": 41,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "After allowing the extension to use local resources from \"out/compiled\", we can create webview URIs to each css and js file that sveltejs builds. Svelte uses the page name as the build name, so we can change this to match any svelte page that we want to use for the webview.",
+      "line": 111,
+      "selection": {
+        "start": {
+          "line": 103,
+          "character": 1
+        },
+        "end": {
+          "line": 112,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "The webview uri is inserted into the webview html here.",
+      "line": 129,
+      "selection": {
+        "start": {
+          "line": 129,
+          "character": 1
+        },
+        "end": {
+          "line": 130,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomWebview.ts",
+      "description": "And the javascript for the svelte component is linked here.",
+      "line": 136,
+      "selection": {
+        "start": {
+          "line": 136,
+          "character": 1
+        },
+        "end": {
+          "line": 137,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/CustomDataEditorProvider.ts",
+      "description": "Any other global css or javascript can also be added to the html string. In this case, we add a global const to access the vscode api from within the client-side code. This allows us to use vscode's global state and other utilities through the API.",
+      "line": 128,
+      "selection": {
+        "start": {
+          "line": 126,
+          "character": 1
+        },
+        "end": {
+          "line": 129,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "webviews/src/components/CustomDataEditor.svelte",
+      "description": "This is an example of using the vscode api to post a message to the extension.",
+      "line": 48,
+      "selection": {
+        "start": {
+          "line": 45,
+          "character": 1
+        },
+        "end": {
+          "line": 49,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "webviews/src/components/CustomDataEditor.svelte",
+      "description": "We can also subscribe or register listeners for messages that are sent from the extension to the client side code.",
+      "line": 63,
+      "selection": {
+        "start": {
+          "line": 63,
+          "character": 1
+        },
+        "end": {
+          "line": 64,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "webviews/src/global.d.ts",
+      "description": "The globals file allows us to declare the global constants that were inserted into the html string by the extension.",
+      "line": 16
+    }
+  ]
+}
