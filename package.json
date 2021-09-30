@@ -10,11 +10,23 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCustomEditor:editorCustoms.customData",
         "onCommand:svelteviews.showWebview",
 		"onView:svelte-sidebar"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"customEditors": [
+			{
+				"viewType": "editorCustoms.customData",
+				"displayName": "Custom Data",
+				"selector": [
+					{
+						"filenamePattern": "*.{customData}"
+					}
+				]
+			}
+		],
 		"viewsContainers": {
 		  "activitybar": [
 			{
